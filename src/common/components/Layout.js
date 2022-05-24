@@ -1,11 +1,12 @@
+import { Container } from "@mui/material";
 import React from "react";
 import { Outlet } from "react-router-dom";
 
-function Layout(props) {
+function Layout() {
   return (
-    <div>
+    <Container maxWidth={false}>
       <Outlet />
-    </div>
+    </Container>
   );
 }
 

@@ -1,7 +1,12 @@
 import React from "react";
+import { Button } from "@mui/material";
 
 function Home() {
-  return <div>Home</div>;
+  return (
+    <div>
+      <Button>Click</Button>
+    </div>
+  );
 }
 
 export default Home;
