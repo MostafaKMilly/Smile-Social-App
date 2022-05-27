@@ -1,25 +1,28 @@
-stages: ['build', 'test', 'deploy']
+stages: 
+  - 'build'
+  - 'test'
+  - 'deploy'
 
 test project:
   stage: test
   image: node:14
   script: 
-    yarn add
-    yarn test
+    - yarn add
+    - yarn test
 
 build project:
   stage: build
   image: node:14
   script:
-    yarn add
-    yarn build
+    - yarn add
+    - yarn build
   artifacts:
     paths:
-      [build/]
+      - build/
 
 netlify:
   stage: deploy
   image: node:14
   script:
-    npm install -g netlify-cli --unsafe-perm=true
-    netlify deploy --dir=build --prod
+    - npm install -g netlify-cli --unsafe-perm=true,
+    - netlify deploy --dir=build --prod
