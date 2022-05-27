@@ -7,14 +7,14 @@ test project:
   stage: test
   image: node:14
   script: 
-    - yarn add
+    - yarn
     - yarn test
 
 build project:
   stage: build
   image: node:14
   script:
-    - yarn add
+    - yarn
     - yarn build
   artifacts:
     paths:
