@@ -1,7 +1,4 @@
-stages: 
-  test
-  build
-  deploy
+stages: ['build', 'test', 'deploy']
 
 test project:
   stage: test
@@ -18,7 +15,7 @@ build project:
     yarn build
   artifacts:
     paths:
-      build/
+      [build/]
 
 netlify:
   stage: deploy
