@@ -21,5 +21,5 @@ netlify:
   stage: deploy
   image: node:14
   script:
-    yarn add -g netlify-cli
+    npm install -g netlify-cli --unsafe-perm=true
     netlify deploy --dir=build --prod
