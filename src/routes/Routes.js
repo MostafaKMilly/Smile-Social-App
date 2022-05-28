@@ -11,8 +11,8 @@ export const rotues = [
     path: "/",
     element: <Layout />,
     children: [
-      { path: "/home", element: <Home /> },
-      { path: "/login", element: <Login /> },
+      { path: "/home", element: <Home />  },
+      { path: "/login", element: <Login /> ,index : true  },
       { path: "/signup", element: <Signup /> },
       { path: "/myMarks", element: <MyMarks /> },
     ],
