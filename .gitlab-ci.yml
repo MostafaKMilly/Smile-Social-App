@@ -28,4 +28,4 @@ deploy_development:
     - development
   script:
     - npm install -g --unsafe-perm=true netlify-cli
-    - netlify deploy --dir=build --site $NETLIFY_DEV_SITE_ID --prod 
+    - netlify deploy --dir=build --site $NETLIFY_SITE_ID=1caefe9e-4aed-4461-9fb4-5ff2cf09fc4a --auth $NETLIFY_AUTH_TOKEN=kRpVlXTVv0NR3I71WM3er8-oBYilgVjyUHp1vAfcwpo --prod
