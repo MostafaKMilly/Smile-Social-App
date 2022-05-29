@@ -1,7 +1,6 @@
-stages: 
-  - 'build'
-  - 'deploy'
-
+stages:
+  - "build"
+  - "deploy"
 
 build project:
   stage: build
@@ -13,9 +12,20 @@ build project:
     paths:
       - build/
 
-netlify:
+deploy master:
   stage: deploy
   image: node:14
+  only:
+    - master
   script:
     - npm install -g --unsafe-perm=true netlify-cli
     - netlify deploy --dir=build --prod
+
+deploy develop:
+  stage: deploy
+  image: node:14
+  only:
+    - develop
+  script:
+    - npm install -g --unsafe-perm=true netlify-cli
+    - netlify deploy --dir=build --site $NETLIFY_SITE_ID=1caefe9e-4aed-4461-9fb4-5ff2cf09fc4a --prod 
