@@ -1,4 +1,6 @@
-export const theme = {
+import { createTheme } from "@mui/material";
+
+export const theme = createTheme({
   palette: {
     primary: {
       main: "#31d638",
@@ -20,4 +22,19 @@ export const theme = {
       fontWeightBold: 700,
     },
   },
-};
+  components: {
+    MuiButton: {
+      defaultProps: {
+        disableElevation: true,
+        disableRipple: true,
+      },
+      styleOverrides: {
+        root: {
+          borderRadius: "50px",
+          color: "white",
+          fontWeight: "bold",
+        },
+      },
+    },
+  },
+});
