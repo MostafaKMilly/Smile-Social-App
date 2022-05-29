@@ -12,16 +12,16 @@ build project:
     paths:
       - build/
 
-deploy master:
+deploy_main:
   stage: deploy
   image: node:14
   only:
-    - master
+    - main
   script:
     - npm install -g --unsafe-perm=true netlify-cli
     - netlify deploy --dir=build --prod
 
-deploy develop:
+deploy_develop:
   stage: deploy
   image: node:14
   only:
