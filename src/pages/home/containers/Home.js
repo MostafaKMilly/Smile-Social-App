@@ -4,7 +4,7 @@ import { Button } from "@mui/material";
 function Home() {
   return (
     <div>
-      <Button>Click</Button>
+      Home
     </div>
   );
 }
