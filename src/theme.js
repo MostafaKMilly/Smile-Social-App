@@ -53,6 +53,8 @@ export const theme = createTheme({
           borderRadius: "50px",
           color: "white",
           fontWeight: "bold",
+          paddingTop : "8px",
+          paddingBottom : "8px"
         },
       },
     },
