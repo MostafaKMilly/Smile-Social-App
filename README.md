@@ -11,6 +11,9 @@ project file structure
 ./data
     |store.js
     |./slices
+./layouts
+    |index.js
+    |Layout.js
 ./pages
     |./home
         |./containers
