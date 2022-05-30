@@ -2,19 +2,26 @@ import React from "react";
 import Layout from "../common/components/Layout";
 import { useRoutes } from "react-router-dom";
 import Home from "../pages/home/containers/Home";
-import Login from "../pages/login/containers/Login";
-import Signup from "../pages/signup/containers/Signup";
 import MyMarks from "../pages/myMarks/containers/MyMarks";
+import Access from "../pages/access/containers/Access";
+import Login from "../pages/access/views/login/containers/Login";
+import Signup from "../pages/access/views/signup/containers/Signup";
 
 export const rotues = [
-  { path: "/login", element: <Login /> },
-  { path: "/signup", element: <Signup /> },
+  {
+    element: <Access />,
+    path: "/access",
+    children: [
+      { path: "login", element: <Login /> },
+      { path: "signup", element: <Signup /> },
+    ],
+  },
   {
     path: "/",
     element: <Layout />,
     children: [
       { index: true, element: <Home /> },
-      { path: "/myMarks", element: <MyMarks /> },
+      { path: "myMarks", element: <MyMarks /> },
     ],
   },
 ];
