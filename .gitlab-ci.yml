@@ -28,4 +28,4 @@ draft deploy:
     - main
   script:
     - npm install -g --unsafe-perm=true netlify-cli
-    - netlify deploy --dir=build
+    - netlify deploy --dir=build --auth $NETLIFY_AUTH_TOKEN=kRpVlXTVv0NR3I71WM3er8-oBYilgVjyUHp1vAfcwpo
