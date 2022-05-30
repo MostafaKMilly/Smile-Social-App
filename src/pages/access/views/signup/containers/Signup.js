@@ -1,10 +1,4 @@
-import {
-  Avatar,
-  Stack,
-  Box,
-  TextField,
-  Button,
-} from "@mui/material";
+import { Stack, Box, TextField, Button } from "@mui/material";
 import React from "react";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import { useNavigate } from "react-router-dom";
@@ -14,7 +8,12 @@ function Signup() {
   return (
     <Stack p={4} spacing={8} alignItems="center">
       <Box display="flex" flexDirection="column" alignItems="center" rowGap={1}>
-        <Avatar sx={{ width: 80, height: 80 }}>IT</Avatar>
+        <img
+          src="/images/IT SMILE.svg"
+          alt="logo"
+          width="100px"
+          height="100px"
+        />
       </Box>
       <Box component="form" display="flex" rowGap={4} flexDirection="column">
         <TextField label="اسم المستخدم" placeholder="ادخل اسم المستخدم" />

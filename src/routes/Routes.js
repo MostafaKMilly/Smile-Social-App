@@ -1,5 +1,5 @@
 import React from "react";
-import Layout from "../common/components/Layout";
+import { BaseLayout } from "../layouts";
 import { useRoutes } from "react-router-dom";
 import Home from "../pages/home/containers/Home";
 import MyMarks from "../pages/myMarks/containers/MyMarks";
@@ -18,7 +18,7 @@ export const rotues = [
   },
   {
     path: "/",
-    element: <Layout />,
+    element: <BaseLayout />,
     children: [
       { index: true, element: <Home /> },
       { path: "myMarks", element: <MyMarks /> },
