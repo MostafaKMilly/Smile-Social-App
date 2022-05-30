@@ -1,0 +1,15 @@
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.accessContainer {
+  background-image: url("../public/images/dot-grid.png");
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 50%;
+}

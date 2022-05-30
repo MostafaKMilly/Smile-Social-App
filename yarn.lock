@@ -1604,6 +1604,13 @@
     prop-types "^15.8.1"
     react-is "^17.0.2"
 
+"@mui/icons-material@^5.8.0":
+  version "5.8.0"
+  resolved "https://registry.yarnpkg.com/@mui/icons-material/-/icons-material-5.8.0.tgz#c85768434bda885c64a8e4b9e222e73912244570"
+  integrity sha512-ScwLxa0q5VYV70Jfc60V/9VD0b9SvIeZ0Jddx2Dt2pBUFFO9vKdrbt9LYiT+4p21Au5NdYIb2XSHj46CLN1v3g==
+  dependencies:
+    "@babel/runtime" "^7.17.2"
+
 "@mui/material@^5.8.1":
   version "5.8.1"
   resolved "https://registry.yarnpkg.com/@mui/material/-/material-5.8.1.tgz#ff3c0dc65cf975362f8b141d4713a6d88b9f08e9"
@@ -3598,6 +3605,11 @@ cssesc@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/cssesc/-/cssesc-3.0.0.tgz#37741919903b868565e1c09ea747445cd18983ee"
   integrity sha512-/Tb/JcjK111nNScGob5MNtsntNM1aCNUDipB/TkwZFhyDrrE47SOx/18wF2bbjgc3ZzCSKW1T5nt5EbFoAz/Vg==
+
+cssjanus@^2.0.1:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/cssjanus/-/cssjanus-2.1.0.tgz#6f99070e0b7cc79f826ea48c63c03cb250713af1"
+  integrity sha512-kAijbny3GmdOi9k+QT6DGIXqFvL96aksNlGr4Rhk9qXDZYWUojU4bRc3IHWxdaLNOqgEZHuXoe5Wl2l7dxLW5g==
 
 cssnano-preset-default@^5.2.9:
   version "5.2.9"
@@ -8326,10 +8338,22 @@ stylehacks@^5.1.0:
     browserslist "^4.16.6"
     postcss-selector-parser "^6.0.4"
 
+stylis-plugin-rtl@2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/stylis-plugin-rtl/-/stylis-plugin-rtl-2.0.2.tgz#d07fc6f3f9818ccc1de6b2d57d67e679b14116e5"
+  integrity sha512-3xKsCTUs/Ab6Kp/NjwTEvcS6eI2ZbIORJssvw2S+H20DlUIp8ZC3drQ/0V3G5P559A4xGwA+XV6ZSJHhEoRvhw==
+  dependencies:
+    cssjanus "^2.0.1"
+
 stylis@4.0.13:
   version "4.0.13"
   resolved "https://registry.yarnpkg.com/stylis/-/stylis-4.0.13.tgz#f5db332e376d13cc84ecfe5dace9a2a51d954c91"
   integrity sha512-xGPXiFVl4YED9Jh7Euv2V220mriG9u4B2TA6Ybjc1catrstKD2PpIdU3U0RKpkVBC2EhmL/F0sPCr9vrFTNRag==
+
+stylis@^4.1.1:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/stylis/-/stylis-4.1.1.tgz#e46c6a9bbf7c58db1e65bb730be157311ae1fe12"
+  integrity sha512-lVrM/bNdhVX2OgBFNa2YJ9Lxj7kPzylieHd3TNjuGE0Re9JB7joL5VUKOVH1kdNNJTgGPpT8hmwIAPLaSyEVFQ==
 
 supports-color@^5.3.0:
   version "5.5.0"
