@@ -2,7 +2,6 @@ import {
   Avatar,
   Stack,
   Box,
-  Typography,
   TextField,
   Button,
 } from "@mui/material";
