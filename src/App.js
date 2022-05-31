@@ -6,17 +6,16 @@ import React from "react";
 // import { createTheme, ThemeProvider } from "@mui/material";
 // import "bootstrap/dist/css/bootstrap.css";
 // import {Button, Alert, Row, Col} from 'react-bootstrap';
-// import LeftSide from "./pages/login/containers/LeftSide";
-// import Menu from "./pages/login/containers/LeftSide"
-// import RightSide from "./pages/login/containers/RightSide";
-import Login from './pages/login/containers/Login'
+import PostPage from './pages/Post/containers/postPage';
+// import Login from './pages/login/containers/Login'
 
 function App() {
   
     return (
      <>
 
-     <Login />
+     {/* <Login /> */}
+    <PostPage/>
      </>
       
     )
