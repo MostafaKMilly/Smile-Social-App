@@ -1,21 +1,26 @@
-import { Container } from "@mui/material";
+import { Box, Container } from "@mui/material";
 import React, { useEffect } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
+import AppBar from "./components/AppBar";
+import BottomNavigationButtons from "./components/BottomNavigationButtons";
 
 function Layout() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log(localStorage.getItem("token"));
     if (!localStorage.getItem("token")) {
       navigate("/access/login");
     }
   }, [navigate]);
 
   return (
-    <Container maxWidth={false}>
-      <Outlet />
-    </Container>
+    <Box>
+      <AppBar />
+      <Container maxWidth={false}>
+        <Outlet />
+        <BottomNavigationButtons />
+      </Container>
+    </Box>
   );
 }
 
