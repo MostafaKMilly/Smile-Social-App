@@ -35,13 +35,17 @@ export const theme = createTheme({
     },
   },
   components: {
-    MuiCssBaseline: {
+    MuiMenuItem: {
       styleOverrides: {
-        ".MuiBox-root": {
-          width: "100%",
+        root: {
+          fontSize: "14px",
+          ":hover": {
+            backgroundColor: "#d5fad7",
+          },
         },
       },
     },
+
     MuiButton: {
       defaultProps: {
         disableElevation: true,
@@ -53,8 +57,8 @@ export const theme = createTheme({
           borderRadius: "50px",
           color: "white",
           fontWeight: "bold",
-          paddingTop : "8px",
-          paddingBottom : "8px"
+          paddingTop: "8px",
+          paddingBottom: "8px",
         },
       },
     },
