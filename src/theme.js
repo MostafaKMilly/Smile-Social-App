@@ -44,6 +44,26 @@ export const theme = createTheme({
         },
       },
     },
+    MuiCssBaseline: {
+      styleOverrides: {
+        "&": {
+          scrollbarWidth: "thin",
+          scrollbarColor: "#bfbfbf transparent",
+        },
+        "&::-webkit-scrollbar": {
+          width: "7px",
+          height: "7px",
+        },
+        "&::-webkit-scrollbar-track": {
+          background: "transparent",
+          borderRadius: "20px",
+        },
+        "&::-webkit-scrollbar-thumb": {
+          backgroundColor: "#bfbfbf",
+          borderRadius: "20px",
+        },
+      },
+    },
     MuiMenuItem: {
       styleOverrides: {
         root: {

@@ -4,7 +4,7 @@ import { store } from "./data";
 import { BrowserRouter as Router } from "react-router-dom";
 import { Routes } from "./routes";
 import { theme } from "./theme";
-import { responsiveFontSizes, ThemeProvider } from "@mui/material";
+import { CssBaseline, responsiveFontSizes, ThemeProvider } from "@mui/material";
 import rtlPlugin from "stylis-plugin-rtl";
 import { CacheProvider } from "@emotion/react";
 import createCache from "@emotion/cache";
@@ -22,6 +22,7 @@ function App() {
       <Provider store={store}>
         <ThemeProvider theme={responsiveFontSizes(theme)}>
           <Router>
+            <CssBaseline />
             <Routes />
           </Router>
         </ThemeProvider>
