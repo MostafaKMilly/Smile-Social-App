@@ -1,8 +1,17 @@
-import { Box, IconButton, Menu, MenuItem } from "@mui/material";
+import {
+  Box,
+  IconButton,
+  ListItemIcon,
+  ListItemText,
+  Menu,
+  MenuItem,
+} from "@mui/material";
 import React from "react";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
 import { useNavigate } from "react-router-dom";
+import RateReviewIcon from "@mui/icons-material/RateReview";
+import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 
 function AppBarMenu() {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -42,8 +51,18 @@ function AppBarMenu() {
         onClose={handleClose}
         elevation={2}
       >
-        <MenuItem onClick={handleClose}>تسجيل شكوى</MenuItem>
-        <MenuItem onClick={handleSignup}>تسجيل خروج</MenuItem>
+        <MenuItem onClick={handleClose} sx={{ columnGap: 1 }}>
+          <ListItemText>تسجيل شكوى</ListItemText>
+          <ListItemIcon>
+            <RateReviewIcon />
+          </ListItemIcon>
+        </MenuItem>
+        <MenuItem onClick={handleSignup} sx={{ columnGap: 1 }}>
+          <ListItemText>تسجيل خروج</ListItemText>
+          <ListItemIcon>
+            <ExitToAppIcon />
+          </ListItemIcon>
+        </MenuItem>
       </Menu>
     </Box>
   );

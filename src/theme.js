@@ -35,6 +35,15 @@ export const theme = createTheme({
     },
   },
   components: {
+    MuiListItemText: {
+      styleOverrides: {
+        root: {
+          "& span": {
+            fontSize: "14px",
+          },
+        },
+      },
+    },
     MuiMenuItem: {
       styleOverrides: {
         root: {

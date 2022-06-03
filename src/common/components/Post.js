@@ -18,7 +18,7 @@ import PropTypes from "prop-types";
 
 function Post({ avatar, username, date, content, type, postImage }) {
   return (
-    <Card elevation={1} sx={{ mb: 5 }}>
+    <Card variant="outlined" sx={{ mb: 5 }}>
       <CardHeader
         sx={{ alignItems: "flex-start" }}
         avatar={<Avatar src={avatar}></Avatar>}
@@ -61,7 +61,11 @@ function Post({ avatar, username, date, content, type, postImage }) {
         image={postImage}
         alt="Paella dish"
       />
-      <CardActions disableSpacing sx={{ justifyContent: "center", my: 0.5 }}>
+      <CardActions
+        disableSpacing
+        sx={{ justifyContent: "center", my: 0.5 }}
+        ele
+      >
         <ButtonBase disableRipple sx={{ color: "textPrimary", columnGap: 1 }}>
           <Typography fontWeight={600}>اعجاب</Typography>
           <ThumbUpOffAltIcon />
