@@ -16,10 +16,14 @@ function Layout() {
   return (
     <Box>
       <AppBar />
-      <Container maxWidth={false}>
+      <Container
+        maxWidth={false}
+        disableGutters
+        sx={{ maxWidth: "730px", mt: 2, pb: 4 }}
+      >
         <Outlet />
-        <BottomNavigationButtons />
       </Container>
+      <BottomNavigationButtons />
     </Box>
   );
 }

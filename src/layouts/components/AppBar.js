@@ -11,7 +11,7 @@ function AppBar() {
   return (
     <MuiAppBar
       position="static"
-      color="transparent"
+      color="inherit"
       elevation={0}
       sx={{ borderBottom: "1px solid #bfccc0" }}
     >

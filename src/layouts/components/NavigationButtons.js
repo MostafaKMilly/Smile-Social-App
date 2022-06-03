@@ -30,7 +30,7 @@ function NavigationButtons() {
   ];
 
   return (
-    <Box display={{ xs: "none", sm: "flex" }} alignItems="center" columnGap={5}>
+    <Box display={{ xs: "none", sm: "flex" }} alignItems="center" columnGap={7}>
       {navs.map((nav) => (
         <IconButton
           key={nav.link}

@@ -7,6 +7,9 @@ body,
   height: 100%;
 }
 
+body {
+  background: #f9f9f9;
+}
 .accessContainer {
   background-image: url("../public/images/dot-grid.png");
   height: 100%;
