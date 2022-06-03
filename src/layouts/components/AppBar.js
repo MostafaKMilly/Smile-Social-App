@@ -10,7 +10,7 @@ function AppBar() {
   const navigate = useNavigate();
   return (
     <MuiAppBar
-      position="static"
+      position="sticky"
       color="inherit"
       elevation={0}
       sx={{ borderBottom: "1px solid #bfccc0" }}
