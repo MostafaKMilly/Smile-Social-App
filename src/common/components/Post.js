@@ -13,10 +13,13 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import React from "react";
 import { Box } from "@mui/system";
 import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
+import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import PropTypes from "prop-types";
 
 function Post({ avatar, username, date, content, type, postImage }) {
+  const [isLiked, setIsLiked] = React.useState(false);
+
   return (
     <Card variant="outlined" sx={{ mb: 5 }}>
       <CardHeader
@@ -66,9 +69,18 @@ function Post({ avatar, username, date, content, type, postImage }) {
         sx={{ justifyContent: "center", my: 0.5 }}
         ele
       >
-        <ButtonBase disableRipple sx={{ color: "textPrimary", columnGap: 1 }}>
-          <Typography fontWeight={600}>اعجاب</Typography>
-          <ThumbUpOffAltIcon />
+        <ButtonBase
+          disableRipple
+          sx={{
+            color: isLiked ? "primary.main" : "textSecondary",
+            columnGap: 1,
+          }}
+          onClick={() => setIsLiked(!isLiked)}
+        >
+          <Typography fontWeight={600} color="inherit">
+            اعجاب
+          </Typography>
+          {isLiked ? <ThumbUpIcon /> : <ThumbUpOffAltIcon />}
         </ButtonBase>
       </CardActions>
     </Card>
