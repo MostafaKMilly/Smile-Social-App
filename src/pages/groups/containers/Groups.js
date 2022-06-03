@@ -9,6 +9,7 @@ import {
 import React from "react";
 import PublicIcon from "@mui/icons-material/Public";
 import { Container, styled } from "@mui/system";
+import { useNavigate } from "react-router-dom";
 
 const IconLayout = styled(Box)({
   borderRadius: "50%",
@@ -27,10 +28,11 @@ const IconLayout = styled(Box)({
 });
 
 function Groups() {
+  const navigate = useNavigate();
   const groups = [
     {
       label: "السنة الاولى",
-      nav: "/groups/first-year",
+      nav: "234/first-year",
       icon: (
         <Icon>
           <Typography color="white">1</Typography>
@@ -39,7 +41,7 @@ function Groups() {
     },
     {
       label: "السنة الثانية",
-      nav: "/groups/second-year",
+      nav: "234/second-year",
       icon: (
         <Icon>
           <Typography color="white">2</Typography>
@@ -48,7 +50,7 @@ function Groups() {
     },
     {
       label: "السنة الثالثة",
-      nav: "/groups/third-year",
+      nav: "234/third-year",
       icon: (
         <Icon>
           <Typography color="white">3</Typography>
@@ -57,7 +59,7 @@ function Groups() {
     },
     {
       label: "المجموعة العامة",
-      nav: "/groups/general",
+      nav: "223/general",
       icon: <PublicIcon />,
     },
   ];
@@ -77,6 +79,7 @@ function Groups() {
               <CardActionArea
                 sx={{ pl: { xs: 0, sm: "16px" }, pt: "16px", pb: 2 }}
                 disableRipple
+                onClick={() => navigate(group.nav)}
               >
                 <Grid
                   container

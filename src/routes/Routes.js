@@ -9,6 +9,8 @@ import Signup from "../pages/access/views/signup/containers/Signup";
 import Groups from "../pages/groups/containers/Groups";
 import Lectures from "../pages/lectures/containers/Lectures";
 import Profile from "../pages/profile/containers/Profile";
+import GeneralGroup from "../pages/group/views/generalGroup/containers/GeneralGroup";
+import Group from "../pages/group/containers/Group";
 
 export const rotues = [
   {
@@ -28,6 +30,16 @@ export const rotues = [
       { path: "myMarks", element: <MyMarks /> },
       { path: "lectures", element: <Lectures /> },
       { path: "profile", element: <Profile /> },
+    ],
+  },
+  {
+    path: "/groups/:groupId/",
+    element: <Group />,
+    children: [
+      {
+        path: "general",
+        element: <GeneralGroup />,
+      },
     ],
   },
 ];

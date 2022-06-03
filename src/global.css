@@ -8,7 +8,7 @@ body,
 }
 
 body {
-  background: #f9f9f9;
+  background: #f9f9f9 !important;
 }
 .accessContainer {
   background-image: url("../public/images/dot-grid.png");
