@@ -27,11 +27,16 @@ function Login() {
         flexDirection="column"
         sx={{ width: "100%" }}
       >
-        <TextField label="اسم المستخدم" placeholder="ادخل اسم المستخدم" />
+        <TextField
+          label="اسم المستخدم"
+          placeholder="ادخل اسم المستخدم"
+          focused
+        />
         <TextField
           type="password"
           label="كلمة السر"
           placeholder="ادخل كلمة السر"
+          focused
         />
         <Link sx={{ color: "#0B5EFF", fontSize: "12px" }} mt={-3}>
           هل نسيت كلمة السر

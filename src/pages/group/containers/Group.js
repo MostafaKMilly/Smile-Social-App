@@ -2,6 +2,7 @@ import {
   AppBar,
   Box,
   Container,
+  Grid,
   IconButton,
   List,
   ListItemButton,
@@ -74,8 +75,11 @@ function Group() {
               <IconButton>
                 <MoreHorizIcon />
               </IconButton>
-              <IconButton sx={{ background: "#f9f9f9" }}>
-                <ArrowBackIcon onClick={() => navigate(-1)} />
+              <IconButton
+                sx={{ background: "#f9f9f9" }}
+                onClick={() => navigate(-1)}
+              >
+                <ArrowBackIcon />
               </IconButton>
             </Box>
           </Toolbar>
@@ -88,6 +92,8 @@ function Group() {
             display: { xs: "none", sm: "block" },
             minWidth: "230px",
             borderRight: "1px solid #7070704a",
+            overflowY: "auto",
+            height: "100%",
           }}
           width="25%"
           height="100%"
@@ -101,7 +107,19 @@ function Group() {
                   fontWeight="700"
                   sx={{ ml: 1 }}
                 >
-                  {"اسفتسارات"}
+                  {"استفسارات عامة"}
+                </Typography>
+              </ListItemText>
+            </ListItemButton>
+            <ListItemButton sx={{ borderLeft: "5px solid #707070", mb: 2 }}>
+              <ListItemText>
+                <Typography
+                  variant="body2"
+                  color="textSecondary"
+                  fontWeight="700"
+                  sx={{ ml: 1 }}
+                >
+                  {"اعلانات"}
                 </Typography>
               </ListItemText>
             </ListItemButton>
@@ -113,13 +131,13 @@ function Group() {
                   fontWeight="700"
                   sx={{ ml: 1 }}
                 >
-                  {"اسئلة واجوبة"}
+                  {"مفقودات"}
                 </Typography>
               </ListItemText>
             </ListItemButton>
           </List>
         </Box>
-        <Box width="100%" height="100%">
+        <Box width="100%" height="100%" sx={{ overflowY: "auto" }}>
           <Box
             height="200px"
             width="100%"
@@ -154,15 +172,25 @@ function Group() {
               </Typography>
             </Box>
           </Box>
+          <Grid container>
+            <Grid item xs={12} sm={8}>
+              <Container
+                maxWidth={false}
+                disableGutters
+                sx={{
+                  pr: { xs: 2, sm: 4 },
+                  pl: { xs: 2, sm: 4 },
+                  mt: 4,
+                  pb: 4,
+                }}
+              >
+                <Outlet />
+              </Container>
+            </Grid>
+            <Grid item xs={12} sm={4}></Grid>
+          </Grid>
         </Box>
       </Box>
-      {/* <Container
-        maxWidth={false}
-        disableGutters
-        sx={{ maxWidth: "730px", mt: 2, pb: 4 }}
-      >
-        <Outlet />
-      </Container> */}
     </Box>
   );
 }

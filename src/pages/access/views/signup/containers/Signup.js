@@ -24,21 +24,28 @@ function Signup() {
         flexDirection="column"
         sx={{ width: "100%" }}
       >
-        <TextField label="اسم المستخدم" placeholder="ادخل اسم المستخدم" />
+        <TextField
+          label="اسم المستخدم"
+          placeholder="ادخل اسم المستخدم"
+          focused
+        />
         <TextField
           label="البريد الالكتروني"
           type="email"
           placeholder="ادخل البريد الالكتروني"
+          focused
         />
         <TextField
           type="password"
           label="كلمة السر"
           placeholder="ادخل كلمة السر"
+          focused
         />
         <TextField
           type="number"
           label="الرقم الجامعي"
           placeholder="ادخل الرقم الجامعي"
+          focused
         />
       </Box>
       <Box display="flex" columnGap={2} sx={{ width: "100%" }}>

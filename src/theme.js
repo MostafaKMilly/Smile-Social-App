@@ -95,7 +95,6 @@ export const theme = createTheme({
       defaultProps: {
         variant: "standard",
         fullWidth: true,
-        focused: true,
       },
       styleOverrides: {
         root: {
