@@ -51,7 +51,7 @@ function GeneralGroup() {
       </Box>
       <GenericDialog
         content={<CreatePostForm />}
-        title="نشر بوست"
+        title="كتابة منشور"
         isOpen={isPostDialogOpen}
         onClose={() => setIsPostDialogOpen(false)}
       />

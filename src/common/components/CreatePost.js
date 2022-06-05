@@ -33,7 +33,7 @@ function CreatePost(props) {
             color="text.secondary"
             sx={{ p: "7px", fontSize: "16px", flexGrow: 1 }}
           >
-            اضغط هنا لنشر منشور
+            اضغط هنا لكتابة منشور
           </Typography>
           <CameraAltIcon
             fontSize="small"
