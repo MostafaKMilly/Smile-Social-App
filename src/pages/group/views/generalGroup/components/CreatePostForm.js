@@ -3,11 +3,16 @@ import React from "react";
 import { Controller, useForm } from "react-hook-form";
 
 function CreatePostForm() {
-  const { control, handleSubmit } = useForm();
+  const { control, handleSubmit } = useForm({
+    defaultValues: {
+      title: "",
+      body: "",
+    },
+  });
   const onSubmit = (data) => console.log(data);
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmit)} id="createGeneralPost">
       <Typography
         gutterBottom
         fontSize="13px"

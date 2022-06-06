@@ -6,8 +6,11 @@ import {
   Post,
 } from "../../../../../common/components";
 import { CreatePostForm } from "../components";
+import { useGeneralPostsQuery } from "../hooks/useGeneralPostsQuery";
 
 function GeneralGroup() {
+  const { data } = useGeneralPostsQuery();
+
   const posts = [
     {
       avatar: "/images/89288184.png",
@@ -45,15 +48,27 @@ function GeneralGroup() {
         >
           احدث المنشورات :
         </Typography>
-        {posts.map((post) => (
-          <Post key={post.username} {...post}></Post>
-        ))}
+        {data &&
+          data.posts.map((post) => (
+            <Post
+              key={post.id}
+              avatar="/images/89288184.png"
+              content={post.body}
+              type={post.type}
+              date={post.createdAt.split("T")[0]}
+              username="mostafakmilly"
+              postImage="/images/post.png"
+            />
+          ))}
+        {!data &&
+          posts.map((post) => <Post key={post.username} {...post}></Post>)}
       </Box>
       <GenericDialog
         content={<CreatePostForm />}
         title="كتابة منشور"
         isOpen={isPostDialogOpen}
         onClose={() => setIsPostDialogOpen(false)}
+        formId="createGeneralPost"
       />
     </Box>
   );

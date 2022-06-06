@@ -64,11 +64,7 @@ function Post({ avatar, username, date, content, type, postImage }) {
         image={postImage}
         alt="Paella dish"
       />
-      <CardActions
-        disableSpacing
-        sx={{ justifyContent: "center", my: 0.5 }}
-        ele
-      >
+      <CardActions disableSpacing sx={{ justifyContent: "center", my: 0.5 }}>
         <ButtonBase
           disableRipple
           sx={{
