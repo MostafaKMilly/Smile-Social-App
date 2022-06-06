@@ -1,15 +1,30 @@
 import { TextField, Typography } from "@mui/material";
 import React from "react";
 import { Controller, useForm } from "react-hook-form";
+import { useCreatePost } from "../hooks/useCreatePost";
+import PropTypes from "prop-types";
 
-function CreatePostForm() {
+function CreatePostForm(props) {
   const { control, handleSubmit } = useForm({
     defaultValues: {
       title: "",
       body: "",
     },
   });
-  const onSubmit = (data) => console.log(data);
+  const [createPost] = useCreatePost();
+
+  const onSubmit = (formData, e) => {
+    e.preventDefault();
+    createPost({
+      variables: {
+        userId: 1,
+        type: "questions",
+        title: formData.title,
+        body: formData.body,
+      },
+    });
+    props.refetchPost();
+  };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} id="createGeneralPost">
@@ -52,5 +67,9 @@ function CreatePostForm() {
     </form>
   );
 }
+
+CreatePostForm.propTypes = {
+  refetchPost: PropTypes.func,
+};
 
 export default CreatePostForm;

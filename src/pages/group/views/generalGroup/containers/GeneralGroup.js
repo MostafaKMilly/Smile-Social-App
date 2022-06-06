@@ -9,7 +9,7 @@ import { CreatePostForm } from "../components";
 import { useGeneralPostsQuery } from "../hooks/useGeneralPostsQuery";
 
 function GeneralGroup() {
-  const { data } = useGeneralPostsQuery();
+  const { data, refetch } = useGeneralPostsQuery();
 
   const posts = [
     {
@@ -64,7 +64,7 @@ function GeneralGroup() {
           posts.map((post) => <Post key={post.username} {...post}></Post>)}
       </Box>
       <GenericDialog
-        content={<CreatePostForm />}
+        content={<CreatePostForm refetchPost={refetch} />}
         title="كتابة منشور"
         isOpen={isPostDialogOpen}
         onClose={() => setIsPostDialogOpen(false)}
