@@ -15,5 +15,5 @@ const CREATE_POST = gql`
 
 export const useCreatePost = () => {
   const mutationObj = useMutation(CREATE_POST);
-  return [...mutationObj];
+  return mutationObj;
 };

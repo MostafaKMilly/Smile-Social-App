@@ -1,11 +1,15 @@
-import { TextField, Typography } from "@mui/material";
+import { Alert, TextField, Typography } from "@mui/material";
 import React from "react";
 import { Controller, useForm } from "react-hook-form";
 import { useCreatePost } from "../hooks/useCreatePost";
 import PropTypes from "prop-types";
 
 function CreatePostForm(props) {
-  const { control, handleSubmit } = useForm({
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
     defaultValues: {
       title: "",
       body: "",
@@ -23,7 +27,7 @@ function CreatePostForm(props) {
         body: formData.body,
       },
     });
-    props.refetchPost();
+    props.onCreatePostSuccess();
   };
 
   return (
@@ -64,12 +68,17 @@ function CreatePostForm(props) {
           <TextField multiline id="body" rows={5} {...field} />
         )}
       />
+      {errors.body && (
+        <Alert severity="error" sx={{ mt: 1 }}>
+          محتوى المنشور مطلوب
+        </Alert>
+      )}
     </form>
   );
 }
 
 CreatePostForm.propTypes = {
-  refetchPost: PropTypes.func,
+  onCreatePostSuccess: PropTypes.func,
 };
 
 export default CreatePostForm;

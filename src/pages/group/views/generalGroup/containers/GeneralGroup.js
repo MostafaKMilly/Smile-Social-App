@@ -9,7 +9,13 @@ import { CreatePostForm } from "../components";
 import { useGeneralPostsQuery } from "../hooks/useGeneralPostsQuery";
 
 function GeneralGroup() {
+  const [isPostDialogOpen, setIsPostDialogOpen] = useState(false);
   const { data, refetch } = useGeneralPostsQuery();
+
+  const onCreatePostSuccess = () => {
+    setIsPostDialogOpen(false);
+    refetch();
+  };
 
   const posts = [
     {
@@ -31,7 +37,7 @@ function GeneralGroup() {
       postImage: "/images/post.png",
     },
   ];
-  const [isPostDialogOpen, setIsPostDialogOpen] = useState(false);
+
   return (
     <Box>
       <CreatePost
@@ -53,7 +59,8 @@ function GeneralGroup() {
             <Post
               key={post.id}
               avatar="/images/89288184.png"
-              content={post.body}
+              title={post.title}
+              body={post.body}
               type={post.type}
               date={post.createdAt.split("T")[0]}
               username="mostafakmilly"
@@ -64,7 +71,7 @@ function GeneralGroup() {
           posts.map((post) => <Post key={post.username} {...post}></Post>)}
       </Box>
       <GenericDialog
-        content={<CreatePostForm refetchPost={refetch} />}
+        content={<CreatePostForm onCreatePostSuccess={onCreatePostSuccess} />}
         title="كتابة منشور"
         isOpen={isPostDialogOpen}
         onClose={() => setIsPostDialogOpen(false)}
