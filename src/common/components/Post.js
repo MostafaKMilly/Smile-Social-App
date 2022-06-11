@@ -17,7 +17,7 @@ import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import PropTypes from "prop-types";
 
-function Post({ avatar, username, date, content, type, postImage }) {
+function Post({ avatar, username, date, body, title, type, postImage }) {
   const [isLiked, setIsLiked] = React.useState(false);
 
   return (
@@ -54,8 +54,11 @@ function Post({ avatar, username, date, content, type, postImage }) {
       />
 
       <CardContent>
+        <Typography color="text.secondary" fontWeight={700} fontSize="15 px" mb={1}>
+          {title}
+        </Typography>
         <Typography variant="body2" color="text.primary">
-          {content}
+          {body}
         </Typography>
       </CardContent>
       <CardMedia
@@ -88,7 +91,8 @@ Post.propTypes = {
   username: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
-  content: PropTypes.string.isRequired,
+  body: PropTypes.string.isRequired,
+  title: PropTypes.string,
   postImage: PropTypes.string.isRequired,
 };
 
