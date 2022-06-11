@@ -18,6 +18,7 @@ const CustomDialog = styled(Dialog)(({ theme }) => ({
   },
   "& .MuiDialogActions-root": {
     padding: theme.spacing(1),
+    justifyContent: "flex-start",
   },
 }));
 
@@ -66,12 +67,7 @@ function GenericDialog(props) {
             {"اغلاق"}
           </Button>
         )}
-        <Button
-          autoFocus
-          onClick={props.onClose}
-          type="submit"
-          form={props.formId}
-        >
+        <Button autoFocus type="submit" form={props.formId}>
           {props.actionLabel || "نشر"}
         </Button>
       </DialogActions>
