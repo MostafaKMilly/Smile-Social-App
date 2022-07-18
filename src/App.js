@@ -11,6 +11,8 @@ import createCache from "@emotion/cache";
 import { prefixer } from "stylis";
 import "./global.css";
 import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
+import { ErrorBoundary } from "react-error-boundary";
+import { ErrorFallback } from "./common/components/ErrorFallback";
 
 const cacheRtl = createCache({
   key: "muirtl",
@@ -30,7 +32,9 @@ function App() {
           <ThemeProvider theme={responsiveFontSizes(theme)}>
             <Router>
               <CssBaseline />
-              <Routes />
+              <ErrorBoundary FallbackComponent={ErrorFallback}>
+                <Routes />
+              </ErrorBoundary>
             </Router>
           </ThemeProvider>
         </Provider>
