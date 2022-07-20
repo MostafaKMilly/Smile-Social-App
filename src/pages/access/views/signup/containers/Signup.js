@@ -36,8 +36,8 @@ function Signup() {
     <Stack
       p={4}
       justifyContent="space-between"
-      alignItems="center"
       sx={{ height: "100%" }}
+      alignItems="center"
     >
       <Box
         display="flex"
@@ -98,13 +98,13 @@ function Signup() {
         <Controller
           name="email"
           control={control}
-          required
           rules={{ required: "البريد الالكتروني مطلوب" }}
           render={({ field }) => (
             <TextField
               {...field}
               label="البريد الالكتروني"
               type="email"
+              required
               error={errors.email ? true : false}
               helperText={errors.email?.message}
             />
@@ -126,6 +126,7 @@ function Signup() {
               {...field}
               type="password"
               label="كلمة السر"
+              required
               error={errors.password ? true : false}
               helperText={errors.password?.message}
             />
