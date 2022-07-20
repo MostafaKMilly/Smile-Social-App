@@ -1,13 +1,42 @@
-import { Stack, Box, TextField, Button } from "@mui/material";
-import React from "react";
+import { Stack, Box, TextField, Button, Typography } from "@mui/material";
+import React, { useState } from "react";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import { useNavigate } from "react-router-dom";
 import { Logo } from "../../../../../common/components";
+import { Controller, useForm } from "react-hook-form";
+import { useMutation } from "@apollo/client";
+import { SIGNUP_QUERY } from "../queries";
+import { AUTH_TOKEN } from "../../../../../constants";
 
 function Signup() {
   const navigate = useNavigate();
+  const [errorMess, setErrMess] = useState();
+  const [signup] = useMutation(SIGNUP_QUERY, {
+    onCompleted: ({ signup }) => {
+      localStorage.setItem(AUTH_TOKEN, signup.token);
+      navigate("/");
+    },
+    onError: (error) => {
+      setErrMess(error.message);
+    },
+  });
+  const {
+    handleSubmit,
+    control,
+    formState: { errors },
+  } = useForm();
+
+  const onSigup = (data) => {
+    signup({ variables: data });
+  };
+
   return (
-    <Stack p={4} spacing={8} alignItems="center">
+    <Stack
+      p={4}
+      justifyContent="space-between"
+      alignItems="center"
+      sx={{ height: "100%" }}
+    >
       <Box
         display="flex"
         flexDirection="column"
@@ -24,32 +53,87 @@ function Signup() {
         flexDirection="column"
         sx={{ width: "100%" }}
       >
-        <TextField
-          label="اسم المستخدم"
-          placeholder="ادخل اسم المستخدم"
-          focused
+        {errorMess && (
+          <Typography
+            gutterBottom
+            color="error"
+            float="left"
+            fontSize="12px"
+            fontWeight="600"
+            sx={{ direction: "rtl" }}
+          >
+            {"- " + errorMess}
+          </Typography>
+        )}
+        <Controller
+          name="firstName"
+          control={control}
+          rules={{ required: "الاسم الاول مطلوب" }}
+          render={({ field }) => (
+            <TextField
+              {...field}
+              label="الاسم الاول"
+              required
+              error={errors.firstName ? true : false}
+              helperText={errors.firstName?.message}
+            />
+          )}
         />
-        <TextField
-          label="البريد الالكتروني"
-          type="email"
-          placeholder="ادخل البريد الالكتروني"
-          focused
+        <Controller
+          name="lastName"
+          control={control}
+          rules={{ required: "الكنية مطلوبة" }}
+          render={({ field }) => (
+            <TextField
+              {...field}
+              label="الكنية"
+              required
+              error={errors.lastName ? true : false}
+              helperText={errors.lastName?.message}
+            />
+          )}
         />
-        <TextField
-          type="password"
-          label="كلمة السر"
-          placeholder="ادخل كلمة السر"
-          focused
+        <Controller
+          name="email"
+          control={control}
+          required
+          rules={{ required: "البريد الالكتروني مطلوب" }}
+          render={({ field }) => (
+            <TextField
+              {...field}
+              label="البريد الالكتروني"
+              type="email"
+              error={errors.email ? true : false}
+              helperText={errors.email?.message}
+            />
+          )}
         />
-        <TextField
-          type="number"
-          label="الرقم الجامعي"
-          placeholder="ادخل الرقم الجامعي"
-          focused
+        <Controller
+          name="password"
+          control={control}
+          required
+          rules={{
+            required: "كلمة السر مطلوبة",
+            minLength: {
+              value: 7,
+              message: "كلمة السر يجب ان تكون اكثر من 7 محارف",
+            },
+          }}
+          render={({ field }) => (
+            <TextField
+              {...field}
+              type="password"
+              label="كلمة السر"
+              error={errors.password ? true : false}
+              helperText={errors.password?.message}
+            />
+          )}
         />
       </Box>
       <Box display="flex" columnGap={2} sx={{ width: "100%" }}>
-        <Button fullWidth>تسجيل حساب</Button>
+        <Button fullWidth onClick={handleSubmit(onSigup)}>
+          تسجيل حساب
+        </Button>
         <Button
           fullWidth
           endIcon={<ChevronLeftIcon />}

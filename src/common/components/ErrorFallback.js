@@ -1,20 +1,12 @@
 import React from "react";
-import { Snackbar } from "@mui/material";
 import PropTypes from "prop-types";
+import CustomSnackbar from "./CustomSnackbar";
 
-export function ErrorFallback({ error, componentStack, resetErrorBoundary }) {
-  return (
-    <Snackbar
-      anchorOrigin={{ vertical: "top", horizontal: "center" }}
-      color="error"
-      onClose={resetErrorBoundary}
-      message={error}
-    />
-  );
+export function ErrorFallback({ error, resetErrorBoundary }) {
+  return <CustomSnackbar message={error} onClose={resetErrorBoundary} />;
 }
 
 ErrorFallback.propTypes = {
   error: PropTypes.string,
-  componentStack: PropTypes.string,
   resetErrorBoundary: PropTypes.func,
 };

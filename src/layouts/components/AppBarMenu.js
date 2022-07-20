@@ -12,6 +12,7 @@ import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
 import { useNavigate } from "react-router-dom";
 import RateReviewIcon from "@mui/icons-material/RateReview";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
+import { AUTH_TOKEN } from "../../constants";
 
 function AppBarMenu() {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -24,9 +25,9 @@ function AppBarMenu() {
     setAnchorEl(null);
   };
 
-  const handleSignup = () => {
+  const handleSignout = () => {
     setAnchorEl(null);
-    localStorage.removeItem("token");
+    localStorage.removeItem(AUTH_TOKEN);
     navigate("/access/login");
   };
 
@@ -57,7 +58,7 @@ function AppBarMenu() {
             <RateReviewIcon />
           </ListItemIcon>
         </MenuItem>
-        <MenuItem onClick={handleSignup} sx={{ columnGap: 1 }}>
+        <MenuItem onClick={handleSignout} sx={{ columnGap: 1 }}>
           <ListItemText>تسجيل خروج</ListItemText>
           <ListItemIcon>
             <ExitToAppIcon />
