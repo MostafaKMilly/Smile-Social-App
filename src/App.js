@@ -10,17 +10,39 @@ import { CacheProvider } from "@emotion/react";
 import createCache from "@emotion/cache";
 import { prefixer } from "stylis";
 import "./global.css";
-import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
+import {
+  ApolloClient,
+  ApolloProvider,
+  createHttpLink,
+  InMemoryCache,
+} from "@apollo/client";
 import { ErrorBoundary } from "react-error-boundary";
 import { ErrorFallback } from "./common/components/ErrorFallback";
+import { setContext } from "@apollo/client/link/context";
+import { AUTH_TOKEN } from "./constants";
+import _ from "lodash";
 
 const cacheRtl = createCache({
   key: "muirtl",
   stylisPlugins: [prefixer, rtlPlugin],
 });
 
-const client = new ApolloClient({
+const httpLink = createHttpLink({
   uri: "http://localhost:4000/",
+});
+
+const authLink = setContext((req, { headers }) => {
+  const token = JSON.parse(localStorage.getItem(AUTH_TOKEN));
+  return {
+    headers: {
+      ...headers,
+      authorization: !_.isEmpty(token) ? `bearer ${token}` : "",
+    },
+  };
+});
+
+const client = new ApolloClient({
+  link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
 });
 
