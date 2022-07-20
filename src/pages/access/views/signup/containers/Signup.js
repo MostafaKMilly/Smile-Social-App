@@ -7,13 +7,15 @@ import { Controller, useForm } from "react-hook-form";
 import { useMutation } from "@apollo/client";
 import { SIGNUP_QUERY } from "../queries";
 import { AUTH_TOKEN } from "../../../../../constants";
+import { useLocalStorage } from "../../../../../common/hooks";
 
 function Signup() {
   const navigate = useNavigate();
   const [errorMess, setErrMess] = useState();
+  const [, setToken] = useLocalStorage(AUTH_TOKEN, "");
   const [signup] = useMutation(SIGNUP_QUERY, {
     onCompleted: ({ signup }) => {
-      localStorage.setItem(AUTH_TOKEN, signup.token);
+      setToken(signup.token);
       navigate("/");
     },
     onError: (error) => {

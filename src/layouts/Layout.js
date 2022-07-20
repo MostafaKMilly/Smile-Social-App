@@ -5,15 +5,17 @@ import { AUTH_TOKEN } from "../constants";
 import AppBar from "./components/AppBar";
 import BottomNavigationButtons from "./components/BottomNavigationButtons";
 import _ from "lodash";
+import { useLocalStorage } from "../common/hooks";
 
 function Layout() {
   const navigate = useNavigate();
+  const [token] = useLocalStorage(AUTH_TOKEN, "");
 
   useEffect(() => {
-    if (_.isEmpty(localStorage.getItem(AUTH_TOKEN))) {
+    if (_.isEmpty(token)) {
       navigate("/access/login");
     }
-  }, [navigate]);
+  }, [navigate, token]);
 
   return (
     <Box>
