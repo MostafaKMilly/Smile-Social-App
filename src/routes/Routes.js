@@ -11,6 +11,7 @@ import Lectures from "../pages/lectures/containers/Lectures";
 import Profile from "../pages/profile/containers/Profile";
 import GeneralGroup from "../pages/group/views/generalGroup/containers/GeneralGroup";
 import Group from "../pages/group/containers/Group";
+import { ProtectedRoute } from "../common/components";
 
 export const rotues = [
   {
@@ -22,23 +23,29 @@ export const rotues = [
     ],
   },
   {
+    element: <ProtectedRoute />,
     path: "/",
-    element: <BaseLayout />,
-    children: [
-      { index: true, element: <Home /> },
-      { path: "groups", element: <Groups /> },
-      { path: "myMarks", element: <MyMarks /> },
-      { path: "lectures", element: <Lectures /> },
-      { path: "profile", element: <Profile /> },
-    ],
-  },
-  {
-    path: "/groups/:groupId/",
-    element: <Group />,
     children: [
       {
-        path: "general",
-        element: <GeneralGroup />,
+        path: "home",
+        element: <BaseLayout />,
+        children: [
+          { index: true, element: <Home /> },
+          { path: "groups", element: <Groups /> },
+          { path: "myMarks", element: <MyMarks /> },
+          { path: "lectures", element: <Lectures /> },
+          { path: "profile", element: <Profile /> },
+        ],
+      },
+      {
+        path: "groups/:groupId/",
+        element: <Group />,
+        children: [
+          {
+            path: "general",
+            element: <GeneralGroup />,
+          },
+        ],
       },
     ],
   },

@@ -1,8 +1,19 @@
 import { Box, Paper } from "@mui/material";
-import React from "react";
-import { Outlet } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
 
 function Access() {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const [, , child] = location.pathname.split("/");
+  const defaultRoute = "/access/login";
+
+  useEffect(() => {
+    if (!child) {
+      navigate(defaultRoute, { replace: true });
+    }
+  }, [child, navigate]);
+
   return (
     <Box className="accessContainer">
       <Box
