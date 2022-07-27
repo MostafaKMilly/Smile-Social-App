@@ -6,6 +6,7 @@ import PersonIcon from "@mui/icons-material/Person";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Box } from "@mui/system";
 import { IconButton } from "@mui/material";
+import { styled, experimental_sx as sx } from "@mui/system";
 
 function NavigationButtons() {
   const { pathname } = useLocation();
@@ -30,7 +31,7 @@ function NavigationButtons() {
   ];
 
   return (
-    <Box display={{ xs: "none", sm: "flex" }} alignItems="center" columnGap={7}>
+    <NavigationButtonsLayout>
       {navs.map((nav) => (
         <IconButton
           key={nav.link}
@@ -41,7 +42,22 @@ function NavigationButtons() {
           {nav.icon}
         </IconButton>
       ))}
-    </Box>
+    </NavigationButtonsLayout>
   );
 }
+
+const NavigationButtonsLayout = styled(Box)(
+  sx({
+    display: {
+      xs: "none",
+      sm: "flex",
+    },
+    position: "absolute",
+    width: "100%",
+    justifyContent: "center",
+    alignItems: "center",
+    columnGap: 7,
+  })
+);
+
 export default NavigationButtons;

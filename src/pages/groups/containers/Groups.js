@@ -64,7 +64,11 @@ function Groups() {
     },
   ];
   return (
-    <Container mt={4}>
+    <Container
+      maxWidth={false}
+      disableGutters
+      sx={{ maxWidth: "730px", mt: 2, pb: 4 }}
+    >
       <Grid container columnSpacing={4} rowSpacing={4}>
         {groups.map((group) => (
           <Grid key={group.nav} item xs={6}>

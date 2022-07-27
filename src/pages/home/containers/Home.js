@@ -1,5 +1,4 @@
-import { Typography } from "@mui/material";
-import { Box } from "@mui/system";
+import { Container, Typography } from "@mui/material";
 import React from "react";
 import { Post } from "../../../common/components/";
 
@@ -25,7 +24,11 @@ function Home() {
     },
   ];
   return (
-    <Box>
+    <Container
+      maxWidth={false}
+      disableGutters
+      sx={{ maxWidth: "730px", mt: 2, pb: 4 }}
+    >
       <Typography
         color="primary.main"
         fontWeight="bold"
@@ -38,7 +41,7 @@ function Home() {
       {posts.map((post) => (
         <Post key={post.username} {...post}></Post>
       ))}
-    </Box>
+    </Container>
   );
 }
 

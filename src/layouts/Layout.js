@@ -10,11 +10,7 @@ function Layout() {
     <ProtectedRoute>
       <Box>
         <AppBar />
-        <Container
-          maxWidth={false}
-          disableGutters
-          sx={{ maxWidth: "730px", mt: 2, pb: 4 }}
-        >
+        <Container maxWidth="xl">
           <Outlet />
         </Container>
         <BottomNavigationButtons />
