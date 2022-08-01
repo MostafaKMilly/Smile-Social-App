@@ -1,15 +1,11 @@
 import { Chip } from "@mui/material";
 import React from "react";
-import { useNavigate } from "react-router-dom";
 import CreateIcon from "@mui/icons-material/Create";
 
 function AddComplaintChip() {
-  const navigate = useNavigate();
-
   return (
     <Chip
       label="تسجيل شكوى"
-      onClick={() => navigate("profile")}
       sx={{
         minWidth: "57px",
         padding: "8px",

@@ -6,7 +6,7 @@ export const useAuth = () => {
   const [value] = useLocalStorage(AUTH_TOKEN);
   let token;
   try {
-    token = jwt_decode(value, { header: true });
+    token = jwt_decode(value);
   } catch {
     token = null;
   }
