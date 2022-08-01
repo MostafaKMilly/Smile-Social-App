@@ -11,6 +11,8 @@ import Lectures from "../pages/lectures/containers/Lectures";
 import Profile from "../pages/profile/containers/Profile";
 import GeneralGroup from "../pages/group/views/generalGroup/containers/GeneralGroup";
 import Group from "../pages/group/containers/Group";
+import PersonPersonalInfo from "../pages/profile/pages/personalInfo/container/PersonPersonalInfo";
+import PersonChangePassword from "../pages/profile/pages/changePassword/container/PersonChangePassword";
 
 export const rotues = [
   {
@@ -29,7 +31,20 @@ export const rotues = [
       { path: "groups", element: <Groups /> },
       { path: "myMarks", element: <MyMarks /> },
       { path: "lectures", element: <Lectures /> },
-      { path: "profile", element: <Profile /> },
+      {
+        path: "profile",
+        element: <Profile />,
+        children: [
+          {
+            index: true,
+            element: <PersonPersonalInfo />,
+          },
+          {
+            path: "changePassword",
+            element: <PersonChangePassword />,
+          },
+        ],
+      },
     ],
   },
   {
