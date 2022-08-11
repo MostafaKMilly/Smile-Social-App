@@ -1,0 +1,2 @@
+export { useChangeUserPassword } from "./useChangeUserPassword";
+

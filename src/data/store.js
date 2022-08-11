@@ -1,8 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
-import errorSlice from "./slices/errorSlice";
+import alertsSlice from "./slices/alerts";
 
 export const store = configureStore({
   reducer: {
-    error: errorSlice,
+    alerts: alertsSlice,
   },
 });

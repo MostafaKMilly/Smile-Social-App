@@ -21,6 +21,7 @@ import { ErrorFallback } from "./common/components/ErrorFallback";
 import { setContext } from "@apollo/client/link/context";
 import { AUTH_TOKEN } from "./constants";
 import _ from "lodash";
+import { SnackbarProvider } from "notistack";
 
 const cacheRtl = createCache({
   key: "muirtl",
@@ -55,7 +56,12 @@ function App() {
             <Router>
               <CssBaseline />
               <ErrorBoundary FallbackComponent={ErrorFallback}>
-                <Routes />
+                <SnackbarProvider
+                  maxSnack={4}
+                  anchorOrigin={{ vertical: "top", horizontal: "center" }}
+                >
+                  <Routes />
+                </SnackbarProvider>
               </ErrorBoundary>
             </Router>
           </ThemeProvider>

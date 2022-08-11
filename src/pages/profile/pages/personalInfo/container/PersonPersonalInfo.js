@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import { Avatar, Button, Grid, IconButton, TextField } from "@mui/material";
 import { useAuth } from "../../../../../common/hooks";
-import { useMutation, useQuery } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import { GET_USER_INFO } from "../../../queries/getUesrInfo";
 import { Box } from "@mui/system";
 import Edit from "@mui/icons-material/Edit";
@@ -9,8 +9,8 @@ import { Controller, useForm } from "react-hook-form";
 import SelectClass from "../../../components/SelectClass";
 import Save from "@mui/icons-material/Save";
 import _ from "lodash";
-import { EDIT_USER_PROFILE } from "../../../queries/EditUserProfile";
 import Spinner from "../../../../../common/components/Spinner";
+import { useEditUserProfile } from "../hooks/useEditUserProfile";
 
 function PersonPersonalInfo(props) {
   const { token } = useAuth();
@@ -28,7 +28,7 @@ function PersonPersonalInfo(props) {
       });
     },
   });
-  const [editProfile] = useMutation(EDIT_USER_PROFILE);
+  const [editProfile] = useEditUserProfile();
 
   if (loading) {
     return <Spinner />;

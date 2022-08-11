@@ -1,12 +1,11 @@
-import { useMutation } from "@apollo/client";
 import { Box, Button, TextField, Typography } from "@mui/material";
 import React from "react";
 import { Controller, useForm } from "react-hook-form";
 import { useAuth } from "../../../../../common/hooks";
-import { CHANGE_PASSWORD } from "../queries/changePassword";
+import { useChangeUserPassword } from "../hooks";
 
-function PersonChangePassword(props) {
-  const [changePassword] = useMutation(CHANGE_PASSWORD);
+function PersonChangePassword() {
+  const [changePassword] = useChangeUserPassword();
 
   const {
     handleSubmit,
