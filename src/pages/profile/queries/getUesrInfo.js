@@ -1,7 +1,7 @@
 import { gql } from "@apollo/client";
 
 export const GET_USER_INFO = gql`
-  query GetAllUser($id: Int!) {
+  query GetUser($id: Int!) {
     getUser(id: $id) {
       bio
       birthday
