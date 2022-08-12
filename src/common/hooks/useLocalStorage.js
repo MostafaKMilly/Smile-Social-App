@@ -4,7 +4,7 @@ export const useLocalStorage = (keyName, defaultValue) => {
   const [value, setValue] = useState(() => {
     try {
       const value = localStorage.getItem(keyName);
-      if (value) {
+      if (value && value !== "undefined") {
         return JSON.parse(value);
       } else {
         localStorage.setItem(keyName, JSON.stringify(defaultValue));
