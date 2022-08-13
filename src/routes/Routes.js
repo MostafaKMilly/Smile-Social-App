@@ -10,8 +10,11 @@ import Groups from "../pages/groups/containers/Groups";
 import Lectures from "../pages/lectures/containers/Lectures";
 import Profile from "../pages/profile/containers/Profile";
 import Group from "../pages/group/containers/Group";
-import PersonPersonalInfo from "../pages/profile/pages/personalInfo/container/PersonPersonalInfo";
-import PersonChangePassword from "../pages/profile/pages/changePassword/container/PersonChangePassword";
+import {
+  PersonPersonalInfo,
+  PersonChangePassword,
+  EditUniversityNumbers,
+} from "../pages/profile/views";
 
 export const rotues = [
   {
@@ -41,6 +44,10 @@ export const rotues = [
           {
             path: "changePassword",
             element: <PersonChangePassword />,
+          },
+          {
+            path: "edit-university-numbers",
+            element: <EditUniversityNumbers />,
           },
         ],
       },

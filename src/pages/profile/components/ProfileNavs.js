@@ -27,7 +27,7 @@ function ProfileNavs() {
     {
       label: "تعديل الارقام الامتحانية ",
       icon: <Edit />,
-      link: "/profile/editUniversityNumbers",
+      link: "/profile/edit-university-numbers",
     },
   ];
 
