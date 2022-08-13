@@ -17,6 +17,8 @@ function PersonPersonalInfo(props) {
   const { handleSubmit, control, reset } = useForm();
   const fileInputRef = useRef();
   const [image, setImage] = useState();
+  const [previewImage, setPreviewImage] = useState();
+
   const { data, loading } = useQuery(GET_USER_INFO, {
     variables: {
       id: token.id,
@@ -45,7 +47,10 @@ function PersonPersonalInfo(props) {
 
   const handleInputFileChange = (e) => {
     const imageFile = e.target.files[0];
-    console.log(imageFile);
+    if (imageFile) {
+      const objectUrl = URL.createObjectURL(imageFile);
+      setPreviewImage(objectUrl);
+    }
     const reader = new FileReader();
     reader.readAsDataURL(imageFile);
     reader.onload = (e) => {
@@ -64,7 +69,7 @@ function PersonPersonalInfo(props) {
       >
         <Avatar
           sx={{ width: "100px", height: "100px" }}
-          src={data?.getUser?.image || "images/89288184.png"}
+          src={data?.getUser?.image || previewImage || "images/89288184.png"}
         />
         <IconButton
           onClick={handleUploadImage}
