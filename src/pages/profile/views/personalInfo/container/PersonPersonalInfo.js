@@ -1,6 +1,5 @@
 import React, { useRef, useState } from "react";
 import { Avatar, Button, Grid, IconButton, TextField } from "@mui/material";
-import { useAuth } from "../../../../../common/hooks";
 import { useQuery } from "@apollo/client";
 import { GET_USER_INFO } from "../../../queries/getUesrInfo";
 import { Box } from "@mui/system";
@@ -12,17 +11,18 @@ import _ from "lodash";
 import Spinner from "../../../../../common/components/Spinner";
 import { useEditUserProfile } from "../hooks/useEditUserProfile";
 import ManageUniversityNumbers from "../components/ManageUniversityNumbers";
+import { useSelector } from "react-redux";
 
 function PersonPersonalInfo() {
-  const { token } = useAuth();
   const { handleSubmit, control, reset } = useForm();
   const fileInputRef = useRef();
   const [image, setImage] = useState();
   const [previewImage, setPreviewImage] = useState();
+  const { id } = useSelector((state) => state.user.info);
 
   const { data, loading } = useQuery(GET_USER_INFO, {
     variables: {
-      id: token.id,
+      id,
     },
     onCompleted: (data) => {
       reset({
@@ -38,7 +38,7 @@ function PersonPersonalInfo() {
   }
 
   const handleEditUserProfile = (data) => {
-    const variables = { ...data, id: token.id, image };
+    const variables = { ...data, id, image };
     editProfile({ variables: _.omit(variables, "__typename", "email") });
   };
 

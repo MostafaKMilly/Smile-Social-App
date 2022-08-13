@@ -1,8 +1,8 @@
 import { Box, Button, TextField, Typography } from "@mui/material";
 import React from "react";
 import { Controller, useForm } from "react-hook-form";
-import { useAuth } from "../../../../../common/hooks";
 import { useChangeUserPassword } from "../hooks";
+import { useSelector } from "react-redux";
 
 function PersonChangePassword() {
   const [changePassword] = useChangeUserPassword();
@@ -12,10 +12,10 @@ function PersonChangePassword() {
     control,
     formState: { errors },
   } = useForm();
-  const { token } = useAuth();
+  const { id } = useSelector((state) => state.user.info);
 
   const handleChangePassword = (data) => {
-    changePassword({ variables: { ...data, id: token.id } });
+    changePassword({ variables: { ...data, id } });
   };
 
   return (

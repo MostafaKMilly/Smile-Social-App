@@ -12,11 +12,15 @@ import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
 import { useNavigate } from "react-router-dom";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import { AUTH_TOKEN } from "../../constants";
+import { useDispatch } from "react-redux";
+import { resetUserInfo } from "../../data/slices/userSlice";
 
 function AppBarMenu() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const navigate = useNavigate();
   const open = Boolean(anchorEl);
+  const dispatch = useDispatch();
+
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -27,6 +31,7 @@ function AppBarMenu() {
   const handleSignout = () => {
     setAnchorEl(null);
     localStorage.removeItem(AUTH_TOKEN);
+    dispatch(resetUserInfo());
     navigate("/access/login");
   };
 

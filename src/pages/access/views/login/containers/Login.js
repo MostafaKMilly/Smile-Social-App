@@ -2,20 +2,24 @@ import { useMutation } from "@apollo/client";
 import { Box, Button, Link, Stack, TextField, Typography } from "@mui/material";
 import React, { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Logo } from "../../../../../common/components";
 import { useLocalStorage } from "../../../../../common/hooks";
 import { AUTH_TOKEN } from "../../../../../constants";
+import { addUserInfo } from "../../../../../data/slices/userSlice";
 import { LOGIN_QUERY } from "../queries/login";
 
 function Login() {
   const navigate = useNavigate();
   const [errorMess, setErrMess] = useState();
   const [, setToken] = useLocalStorage(AUTH_TOKEN, "");
+  const dispatch = useDispatch();
 
   const [login] = useMutation(LOGIN_QUERY, {
     onCompleted: ({ login }) => {
       setToken(login.token);
+      dispatch(addUserInfo(login.token));
       navigate("/");
     },
     onError: (error) => {
