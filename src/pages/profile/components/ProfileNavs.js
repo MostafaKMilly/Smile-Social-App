@@ -8,7 +8,6 @@ import {
 } from "@mui/material";
 import Person from "@mui/icons-material/Person";
 import Password from "@mui/icons-material/Password";
-import Edit from "@mui/icons-material/Edit";
 import { useLocation, useNavigate } from "react-router-dom";
 
 function ProfileNavs() {
@@ -23,11 +22,6 @@ function ProfileNavs() {
       label: "تغيير كلمة السر",
       icon: <Password />,
       link: "/profile/changePassword",
-    },
-    {
-      label: "تعديل الارقام الامتحانية ",
-      icon: <Edit />,
-      link: "/profile/edit-university-numbers",
     },
   ];
 

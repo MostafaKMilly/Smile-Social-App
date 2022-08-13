@@ -13,6 +13,11 @@ export const GET_USER_INFO = gql`
       image
       lastName
       telegramURL
+      userUniversityNumbers {
+        id
+        year
+        universityNumber
+      }
     }
   }
 `;

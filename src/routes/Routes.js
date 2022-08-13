@@ -13,7 +13,6 @@ import Group from "../pages/group/containers/Group";
 import {
   PersonPersonalInfo,
   PersonChangePassword,
-  EditUniversityNumbers,
 } from "../pages/profile/views";
 
 export const rotues = [
@@ -44,10 +43,6 @@ export const rotues = [
           {
             path: "changePassword",
             element: <PersonChangePassword />,
-          },
-          {
-            path: "edit-university-numbers",
-            element: <EditUniversityNumbers />,
           },
         ],
       },

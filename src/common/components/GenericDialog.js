@@ -67,7 +67,12 @@ function GenericDialog(props) {
             {"اغلاق"}
           </Button>
         )}
-        <Button autoFocus type="submit" form={props.formId}>
+        <Button
+          autoFocus
+          type="submit"
+          form={props.formId}
+          onClick={props.onSubmit}
+        >
           {props.actionLabel || "نشر"}
         </Button>
       </DialogActions>
@@ -83,6 +88,7 @@ GenericDialog.propTypes = {
   onClose: PropTypes.func,
   hasCloseButton: PropTypes.bool,
   formId: PropTypes.string,
+  onSubmit: PropTypes.func,
 };
 
 GenericDialog.defaultProps = {

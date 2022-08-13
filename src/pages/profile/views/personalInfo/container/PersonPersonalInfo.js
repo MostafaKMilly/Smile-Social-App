@@ -11,8 +11,9 @@ import Save from "@mui/icons-material/Save";
 import _ from "lodash";
 import Spinner from "../../../../../common/components/Spinner";
 import { useEditUserProfile } from "../hooks/useEditUserProfile";
+import ManageUniversityNumbers from "../components/ManageUniversityNumbers";
 
-function PersonPersonalInfo(props) {
+function PersonPersonalInfo() {
   const { token } = useAuth();
   const { handleSubmit, control, reset } = useForm();
   const fileInputRef = useRef();
@@ -222,6 +223,11 @@ function PersonPersonalInfo(props) {
                   variant="outlined"
                 />
               )}
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <ManageUniversityNumbers
+              universityNumbers={data?.getUser?.userUniversityNumbers}
             />
           </Grid>
           <Grid item xs={12}>
