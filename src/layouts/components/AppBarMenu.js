@@ -14,12 +14,14 @@ import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import { AUTH_TOKEN } from "../../constants";
 import { useDispatch } from "react-redux";
 import { resetUserInfo } from "../../data/slices/userSlice";
+import { useApolloClient } from "@apollo/client";
 
 function AppBarMenu() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const navigate = useNavigate();
   const open = Boolean(anchorEl);
   const dispatch = useDispatch();
+  const client = useApolloClient()
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -32,6 +34,7 @@ function AppBarMenu() {
     setAnchorEl(null);
     localStorage.removeItem(AUTH_TOKEN);
     dispatch(resetUserInfo());
+    client.resetStore()
     navigate("/access/login");
   };
 

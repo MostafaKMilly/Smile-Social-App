@@ -14,6 +14,7 @@ import { GenericDialog } from "../../../../../common/components";
 import { useForm } from "react-hook-form";
 import AddUniversityNumberForm from "./AddUniversityNumberForm";
 import { useAddUniverityNumber } from "../hooks/useAddUniverityNumber";
+import { useDeleteUniversityNumber } from "../hooks/useDeleteUniversityNumber";
 
 function ManageUniversityNumbers({ universityNumbers }) {
   const [open, setOpen] = useState(false);
@@ -21,6 +22,7 @@ function ManageUniversityNumbers({ universityNumbers }) {
     control,
     handleSubmit,
     formState: { errors },
+    reset
   } = useForm();
   const [addUniversityNumber] = useAddUniverityNumber();
   const handleAddUniversityNumber = (data) => {
@@ -32,6 +34,16 @@ function ManageUniversityNumbers({ universityNumbers }) {
       variables: reqObject,
       onCompleted: () => {
         setOpen(false);
+        reset()
+      },
+    });
+  };
+  const [deleteUniversityNumber] = useDeleteUniversityNumber();
+
+  const handleDeleteUniversityNumber = (id) => {
+    deleteUniversityNumber({
+      variables: {
+        id,
       },
     });
   };
@@ -46,15 +58,19 @@ function ManageUniversityNumbers({ universityNumbers }) {
           <Add />
         </IconButton>
       </Box>
-      {universityNumbers.map((number) => (
-        <List sx={{ maxWidth: "500px" }}>
+      <List sx={{ maxWidth: "500px" }}>
+        {universityNumbers.map((number) => (
           <ListItem
             alignItems="flex-start"
             secondaryAction={
-              <IconButton color="error">
+              <IconButton
+                color="error"
+                onClick={() => handleDeleteUniversityNumber(number.id)}
+              >
                 <DeleteIcon />
               </IconButton>
             }
+            key={number.id}
           >
             <ListItemText
               primary={
@@ -69,8 +85,8 @@ function ManageUniversityNumbers({ universityNumbers }) {
               }
             />
           </ListItem>
-        </List>
-      ))}
+        ))}
+      </List>
       <GenericDialog
         isOpen={open}
         onClose={() => setOpen(false)}

@@ -19,7 +19,7 @@ function PersonPersonalInfo() {
   const [image, setImage] = useState();
   const [previewImage, setPreviewImage] = useState();
   const { id } = useSelector((state) => state.user.info);
-
+  
   const { data, loading } = useQuery(GET_USER_INFO, {
     variables: {
       id,

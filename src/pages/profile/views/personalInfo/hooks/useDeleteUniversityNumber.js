@@ -1,13 +1,13 @@
 import { useMutation } from "@apollo/client";
-import { EDIT_USER_PROFILE } from "../../../queries/EditUserProfile";
-import { useSnackbar } from "notistack";
-import { IconButton } from "@mui/material";
 import { Close } from "@mui/icons-material";
+import { IconButton } from "@mui/material";
+import { useSnackbar } from "notistack";
+import { DELETE_UNIVERSITY_NUMBER } from "../queries/deleteUniversityNumber";
 
-export const useEditUserProfile = () => {
+export const useDeleteUniversityNumber = () => {
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
-  const mutate = useMutation(EDIT_USER_PROFILE, {
+  const mutate = useMutation(DELETE_UNIVERSITY_NUMBER, {
     onError: (error) => {
       enqueueSnackbar(error.message, {
         variant: "error",
@@ -18,8 +18,9 @@ export const useEditUserProfile = () => {
         ),
       });
     },
+
     onCompleted: () => {
-      enqueueSnackbar("Profile changed successfully", {
+      enqueueSnackbar("Univeristy number deleted successfully", {
         variant: "success",
         action: (key) => (
           <IconButton onClick={() => closeSnackbar(key)}>
@@ -28,7 +29,7 @@ export const useEditUserProfile = () => {
         ),
       });
     },
-    refetchQueries: ["GetSubjects"],
+    refetchQueries: ["GetUser"],
   });
   return mutate;
 };
