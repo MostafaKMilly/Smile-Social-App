@@ -12,6 +12,7 @@ import Spinner from "../../../../../common/components/Spinner";
 import { useEditUserProfile } from "../hooks/useEditUserProfile";
 import ManageUniversityNumbers from "../components/ManageUniversityNumbers";
 import { useSelector } from "react-redux";
+import { IMAGES_LINK } from "../../../../../constants";
 
 function PersonPersonalInfo() {
   const { handleSubmit, control, reset } = useForm();
@@ -19,12 +20,15 @@ function PersonPersonalInfo() {
   const [image, setImage] = useState();
   const [previewImage, setPreviewImage] = useState();
   const { id } = useSelector((state) => state.user.info);
-  
+
   const { data, loading } = useQuery(GET_USER_INFO, {
     variables: {
       id,
     },
     onCompleted: (data) => {
+      if (data.getUser?.image) {
+        setPreviewImage(IMAGES_LINK + data.getUser?.image);
+      }
       reset({
         ...data?.getUser,
         birthday: data?.getUser?.birthday?.split("T")?.[0],
@@ -70,7 +74,7 @@ function PersonPersonalInfo() {
       >
         <Avatar
           sx={{ width: "100px", height: "100px" }}
-          src={data?.getUser?.image || previewImage || "images/89288184.png"}
+          src={previewImage || "images/89288184.png"}
         />
         <IconButton
           onClick={handleUploadImage}
