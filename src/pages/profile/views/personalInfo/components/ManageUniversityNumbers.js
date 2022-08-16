@@ -22,19 +22,20 @@ function ManageUniversityNumbers({ universityNumbers }) {
     control,
     handleSubmit,
     formState: { errors },
-    reset
+    reset,
   } = useForm();
   const [addUniversityNumber] = useAddUniverityNumber();
   const handleAddUniversityNumber = (data) => {
     const reqObject = {
       ...data,
       universityNumber: parseInt(data.universityNumber),
+      year: data.yearOne.year() + "/" + data.yearTwo.year(),
     };
     addUniversityNumber({
       variables: reqObject,
       onCompleted: () => {
         setOpen(false);
-        reset()
+        reset();
       },
     });
   };
