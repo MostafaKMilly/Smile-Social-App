@@ -14,6 +14,11 @@ import {
   PersonPersonalInfo,
   PersonChangePassword,
 } from "../pages/profile/views";
+import GroupQuizes from "../pages/group/views/quizes/containers/GroupQuizes";
+import Settings from "../pages/settings/containers/Settings";
+import ManageUsers from "../pages/settings/views/manageUsers/containers/ManageUsers";
+import AuthComponent from "../common/components/AuthComponent";
+import DeleteUserAccount from "../pages/settings/views/deleteAccount/containers/DeleteUserAccount";
 
 export const rotues = [
   {
@@ -46,11 +51,35 @@ export const rotues = [
           },
         ],
       },
+      {
+        path: "settings",
+        element: <Settings />,
+        children: [
+          {
+            path: "manage-users",
+            element: (
+              <AuthComponent show={["Admin_"]}>
+                <ManageUsers />,
+              </AuthComponent>
+            ),
+          },
+          {
+            path: "delete-account",
+            element: <DeleteUserAccount />,
+          },
+        ],
+      },
     ],
   },
   {
     path: "/groups/:groupName/",
     element: <Group />,
+    children: [
+      {
+        path: "quizes",
+        element: <GroupQuizes />,
+      },
+    ],
   },
 ];
 

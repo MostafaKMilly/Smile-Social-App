@@ -33,21 +33,30 @@ function CreatePost(props) {
             color="text.secondary"
             sx={{ p: "7px", fontSize: "16px", flexGrow: 1 }}
           >
-            اضغط هنا لكتابة منشور
+            {props.text}
           </Typography>
-          <CameraAltIcon
-            fontSize="small"
-            sx={{ color: "text.secondary", mr: 2 }}
-          />
+          {props.showIcon && (
+            <CameraAltIcon
+              fontSize="small"
+              sx={{ color: "text.secondary", mr: 2 }}
+            />
+          )}
         </Box>
       </Box>
     </Box>
   );
 }
 
+CreatePost.defaultProps = {
+  showIcon: true,
+  text: "اضغط هنا لكتابة منشور",
+};
+
 CreatePost.propTypes = {
   onClick: PropTypes.func,
   avatar: PropTypes.string,
+  showIcon: PropTypes.bool,
+  text: PropTypes.string,
 };
 
 export default CreatePost;

@@ -12,15 +12,20 @@ import {
   Typography,
 } from "@mui/material";
 import React from "react";
-import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet, useNavigate, useParams } from "react-router-dom";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import SearchIcon from "@mui/icons-material/Search";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { Logo, ProtectedRoute } from "../../../common/components";
+import { useGroupSubjects } from "../hooks";
+import GroupNavs from "../components/GroupNavs";
 
 function Group() {
   const navigate = useNavigate();
+  const { groupName } = useParams();
+  const { data } = useGroupSubjects(groupName);
 
+  console.log(data);
   return (
     <ProtectedRoute>
       <Box height="91%">
@@ -97,7 +102,7 @@ function Group() {
             height="100%"
           >
             <List sx={{ my: 1 }}>
-              <ListItemButton sx={{ borderLeft: "5px solid #31d638", mb: 2 }}>
+              <ListItemButton sx={{ borderLeft: "5px solid #707070", mb: 2 }}>
                 <ListItemText>
                   <Typography
                     variant="body2"
@@ -118,18 +123,6 @@ function Group() {
                     sx={{ ml: 1 }}
                   >
                     {"اعلانات"}
-                  </Typography>
-                </ListItemText>
-              </ListItemButton>
-              <ListItemButton sx={{ borderLeft: "5px solid #707070" }}>
-                <ListItemText>
-                  <Typography
-                    variant="body2"
-                    color="textSecondary"
-                    fontWeight="700"
-                    sx={{ ml: 1 }}
-                  >
-                    {"مفقودات"}
                   </Typography>
                 </ListItemText>
               </ListItemButton>
@@ -166,7 +159,7 @@ function Group() {
                   fontSize={{ xs: "14px", sm: "17px" }}
                   fontWeight={700}
                 >
-                  المجموعة العامة
+                  {groupName + " Group"}
                 </Typography>
               </Box>
             </Box>
@@ -182,6 +175,7 @@ function Group() {
                     pb: 4,
                   }}
                 >
+                  {groupName !== "Special" && <GroupNavs />}
                   <Outlet />
                 </Container>
               </Grid>

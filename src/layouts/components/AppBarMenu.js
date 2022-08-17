@@ -11,17 +11,14 @@ import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
 import { useNavigate } from "react-router-dom";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
-import { AUTH_TOKEN } from "../../constants";
-import { useDispatch } from "react-redux";
-import { resetUserInfo } from "../../data/slices/userSlice";
-import { useApolloClient } from "@apollo/client";
+import SettingsIcon from "@mui/icons-material/Settings";
+import { useSignout } from "../../common/hooks/useSignout";
 
 function AppBarMenu() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const navigate = useNavigate();
   const open = Boolean(anchorEl);
-  const dispatch = useDispatch();
-  const client = useApolloClient()
+  const { signout } = useSignout();
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -32,10 +29,7 @@ function AppBarMenu() {
 
   const handleSignout = () => {
     setAnchorEl(null);
-    localStorage.removeItem(AUTH_TOKEN);
-    dispatch(resetUserInfo());
-    client.resetStore()
-    navigate("/access/login");
+    signout();
   };
 
   return (
@@ -59,6 +53,17 @@ function AppBarMenu() {
         onClose={handleClose}
         elevation={2}
       >
+        <MenuItem
+          onClick={() => {
+            navigate("settings");
+          }}
+          sx={{ columnGap: 1 }}
+        >
+          <ListItemText>الاعدادات</ListItemText>
+          <ListItemIcon>
+            <SettingsIcon />
+          </ListItemIcon>
+        </MenuItem>
         <MenuItem onClick={handleSignout} sx={{ columnGap: 1 }}>
           <ListItemText>تسجيل خروج</ListItemText>
           <ListItemIcon>
