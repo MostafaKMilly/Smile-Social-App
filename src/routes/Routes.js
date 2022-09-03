@@ -19,6 +19,8 @@ import Settings from "../pages/settings/containers/Settings";
 import ManageUsers from "../pages/settings/views/manageUsers/containers/ManageUsers";
 import AuthComponent from "../common/components/AuthComponent";
 import DeleteUserAccount from "../pages/settings/views/deleteAccount/containers/DeleteUserAccount";
+import ComplainesList from "../pages/settings/views/complaines/containers/ComplainesList";
+import GrouopPosts from "../pages/group/views/posts/containers/GrouopPosts";
 
 export const rotues = [
   {
@@ -67,6 +69,14 @@ export const rotues = [
             path: "delete-account",
             element: <DeleteUserAccount />,
           },
+          {
+            path: "view-complaines",
+            element: (
+              <AuthComponent show={["Admin_"]}>
+                <ComplainesList />,
+              </AuthComponent>
+            ),
+          },
         ],
       },
     ],
@@ -78,6 +88,10 @@ export const rotues = [
       {
         path: "quizes",
         element: <GroupQuizes />,
+      },
+      {
+        index: true,
+        element: <GrouopPosts />,
       },
     ],
   },

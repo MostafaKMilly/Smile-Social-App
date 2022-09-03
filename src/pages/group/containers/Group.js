@@ -25,7 +25,6 @@ function Group() {
   const { groupName } = useParams();
   const { data } = useGroupSubjects(groupName);
 
-  console.log(data);
   return (
     <ProtectedRoute>
       <Box height="91%">

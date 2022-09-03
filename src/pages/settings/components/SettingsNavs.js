@@ -10,6 +10,7 @@ import Group from "@mui/icons-material/Group";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { Delete } from "@mui/icons-material";
+import WarningIcon from "@mui/icons-material/Warning";
 
 function SettingsNavs() {
   const navigate = useNavigate();
@@ -27,6 +28,12 @@ function SettingsNavs() {
       icon: <Delete />,
       link: "/settings/delete-account",
       roles: "*",
+    },
+    {
+      label: "عرض الشكاوى",
+      icon: <WarningIcon />,
+      link: "/settings/view-complaines",
+      roles: ["Admin_"],
     },
   ];
 

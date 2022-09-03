@@ -1,19 +1,30 @@
 import { gql, useMutation } from "@apollo/client";
 
 const CREATE_POST = gql`
-  mutation createPost(
-    $userId: Int!
-    $type: String!
-    $title: String
+  mutation AddPost(
+    $type: PostTypes!
+    $title: String!
     $body: String!
+    $subjectId: Int
+    $userId: Int!
+    $images: [String]!
   ) {
-    createPost(UserId: $userId, body: $body, type: $type, title: $title) {
+    addPost(
+      type: $type
+      title: $title
+      body: $body
+      subjectId: $subjectId
+      userId: $userId
+      images: $images
+    ) {
       id
     }
   }
 `;
 
 export const useCreatePost = () => {
-  const mutationObj = useMutation(CREATE_POST);
+  const mutationObj = useMutation(CREATE_POST, {
+    refetchQueries: ["GetPosts"],
+  });
   return mutationObj;
 };

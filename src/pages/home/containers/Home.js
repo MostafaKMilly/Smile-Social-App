@@ -1,34 +1,26 @@
-import { Container, Typography } from "@mui/material";
+import { Box, Button, Container, Typography } from "@mui/material";
 import React from "react";
 import { Post } from "../../../common/components/";
+import BookmarksIcon from "@mui/icons-material/Bookmarks";
+import { useNavigate } from "react-router-dom";
+import { usePostsQuery } from "../../group/hooks";
 
 function Home() {
-  const posts = [
-    {
-      avatar: "/images/89288184.png",
-      type: "استفسارات",
-      username: "mostafakmilly",
-      date: new Date().toISOString().split("T")[0],
-      content:
-        "Sed finibus augue magna, dictum iaculis arcu ullamcorper id. Duis laoreet nulla imperdiet nisi auctor, id tincidunt neque rhoncus. Quisque tempus porta mauris et luctus. In finibus ex mauris. Donec laoreet vehicula molestie. Aenean aliquam",
-      postImage: "/images/post.png",
-    },
-    {
-      avatar: "/images/89288184.png",
-      type: "استفسارات",
-      username: "noor mohammad",
-      date: new Date().toISOString().split("T")[0],
-      content:
-        "Sed finibus augue magna, dictum iaculis arcu ullamcorper id. Duis laoreet nulla imperdiet nisi auctor, id tincidunt neque rhoncus. Quisque tempus porta mauris et luctus. In finibus ex mauris. Donec laoreet vehicula molestie. Aenean aliquam",
-      postImage: "/images/post.png",
-    },
-  ];
+  const navigate = useNavigate();
+  const { data, loading } = usePostsQuery({ group: "First" });
   return (
     <Container
       maxWidth={false}
       disableGutters
       sx={{ maxWidth: "730px", mt: 2, pb: 4 }}
     >
+      <Button
+        startIcon={<BookmarksIcon />}
+        onClick={() => navigate("myMarks")}
+        sx={{ my: 1 }}
+      >
+        علاماتي
+      </Button>
       <Typography
         color="primary.main"
         fontWeight="bold"
@@ -38,9 +30,31 @@ function Home() {
       >
         المنشورات المخصصة :
       </Typography>
-      {posts.map((post) => (
-        <Post key={post.username} {...post}></Post>
-      ))}
+      <Box mt={2}>
+        {data &&
+          data.getPosts.map((post) => (
+            <Post
+              key={post.id}
+              image={post.user.image}
+              firstName={post.user.firstName}
+              lastName={post.user.lastName}
+              createdAt={post.createdAt.split("T")[0]}
+              title={post.title}
+              isLiked={post.isLiked}
+              likesCnt={post.likesCnt}
+              body={post.body}
+              type={post.type}
+              subjectName={post.subject.name}
+              postImage={post.postImages[0].name}
+            />
+          ))}
+
+        {(!data || data.getPosts.length === 0) && (
+          <Typography fontSize="15px" color="textSecondary">
+            لا يوجد منشورات لعرضها
+          </Typography>
+        )}
+      </Box>
     </Container>
   );
 }

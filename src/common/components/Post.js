@@ -16,15 +16,34 @@ import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import PropTypes from "prop-types";
+import { getUserImage } from "../util";
+import { IMAGES_LINK } from "../../constants";
 
-function Post({ avatar, username, date, body, title, type, postImage }) {
-  const [isLiked, setIsLiked] = React.useState(false);
-
+const getPostImage = (image) => {
+  if (image) {
+    return IMAGES_LINK + image;
+  }
+  return "/images/post.png";
+};
+function Post({
+  image,
+  firstName,
+  lastName,
+  createdAt,
+  body,
+  title,
+  type,
+  postImage,
+  subjectName,
+  isLiked,
+  likesCnt,
+}) {
+  const [liked, setLiked] = React.useState(isLiked);
   return (
     <Card variant="outlined" sx={{ mb: 5 }}>
       <CardHeader
         sx={{ alignItems: "flex-start" }}
-        avatar={<Avatar src={avatar}></Avatar>}
+        avatar={<Avatar src={getUserImage(image)}></Avatar>}
         action={
           <IconButton>
             <MoreVertIcon />
@@ -32,7 +51,7 @@ function Post({ avatar, username, date, body, title, type, postImage }) {
         }
         title={
           <Typography fontSize={"15px"} fontWeight={500}>
-            {username}
+            {firstName + " " + lastName}
           </Typography>
         }
         subheader={
@@ -40,13 +59,16 @@ function Post({ avatar, username, date, body, title, type, postImage }) {
             <Typography fontSize="14px" color="primary.main">
               {type}
             </Typography>
+            <Typography fontSize="12px" color="primary.main">
+              {subjectName}
+            </Typography>
             <Box display="flex" columnGap={1} alignItems="center">
               <CalendarTodayIcon
                 sx={{ fontSize: "12px" }}
                 color="textSecondary"
               />
               <Typography color="textSecondary" fontSize="14px">
-                {date}
+                {createdAt}
               </Typography>
             </Box>
           </Box>
@@ -54,7 +76,12 @@ function Post({ avatar, username, date, body, title, type, postImage }) {
       />
 
       <CardContent>
-        <Typography color="text.secondary" fontWeight={700} fontSize="15 px" mb={1}>
+        <Typography
+          color="text.secondary"
+          fontWeight={700}
+          fontSize="15 px"
+          mb={1}
+        >
           {title}
         </Typography>
         <Typography variant="body2" color="text.primary">
@@ -64,7 +91,7 @@ function Post({ avatar, username, date, body, title, type, postImage }) {
       <CardMedia
         component="img"
         height="350"
-        image={postImage}
+        image={getPostImage(postImage)}
         alt="Paella dish"
       />
       <CardActions disableSpacing sx={{ justifyContent: "center", my: 0.5 }}>
@@ -74,12 +101,12 @@ function Post({ avatar, username, date, body, title, type, postImage }) {
             color: isLiked ? "primary.main" : "textSecondary",
             columnGap: 1,
           }}
-          onClick={() => setIsLiked(!isLiked)}
+          onClick={() => setLiked(!liked)}
         >
           <Typography fontWeight={600} color="inherit">
-            اعجاب
+            {`${liked ? 1 : 0} اعجاب`}
           </Typography>
-          {isLiked ? <ThumbUpIcon /> : <ThumbUpOffAltIcon />}
+          {liked ? <ThumbUpIcon /> : <ThumbUpOffAltIcon />}
         </ButtonBase>
       </CardActions>
     </Card>
@@ -87,13 +114,15 @@ function Post({ avatar, username, date, body, title, type, postImage }) {
 }
 
 Post.propTypes = {
-  avatar: PropTypes.string.isRequired,
-  username: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
-  date: PropTypes.string.isRequired,
+  createdAt: PropTypes.string.isRequired,
   body: PropTypes.string.isRequired,
   title: PropTypes.string,
   postImage: PropTypes.string.isRequired,
+  isLiked: PropTypes.bool,
+  subjectName: PropTypes.string,
+  likesCnt: PropTypes.number,
 };
 
 export default Post;
